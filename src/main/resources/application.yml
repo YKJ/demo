@@ -1,0 +1,49 @@
+server:
+    port: 8080
+    contextPath: /
+    sessionTimeout: 1800
+    
+    compression:
+        enabled: true
+        mime-types: application/json
+        
+    tomcat:
+        basedir: tmp
+        max-threads: 200
+
+multipart:
+    maxFileSize: 2048MB
+    maxRequestSize: 2560MB
+
+spring:
+    profiles: 
+        active: local
+        
+    thymeleaf:
+      cache : false
+    
+    datasource:
+        url: jdbc:mysql://localhost:3306/vpm?useUnicode=true&characterEncoding=utf-8&autoReconnect=true&useSSL=false
+        username: root
+        password: matt123
+        driver-class-name: com.mysql.jdbc.Driver
+        initial-size: 1
+        max-active: 10
+        min-idle: 1
+        max-idle: 1
+        validation-query: select 1
+        test-on-borrow: true
+        
+    jpa:
+        database: MYSQL
+        open-in-view: true
+        hibernate:
+            ddl-auto: none
+        properties:
+            hibernate:
+                show_sql: false
+                dialect: org.hibernate.dialect.MySQL5Dialect
+                event:
+                    merge:
+                        entity_copy_observer: allow
+            
